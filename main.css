@@ -1,0 +1,48 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family:'Lato', sans-serif;;
+}
+
+div {
+	float: left;
+}
+
+#game-board {
+	height: 810px;
+	width: 810px;
+}
+
+.row {
+	width: 800px;
+	padding: 0;
+	margin: 0;
+}
+
+.square {
+	display: inline-block;
+	background-color: #bdc3c7;
+	border: 2px solid black;
+	text-align: center;
+	line-height: 100px;
+	height: 100px;
+	width: 100px;
+	padding: 5px;
+	margin: 0px;
+}
+
+.row:nth-child(even) .square:nth-child(even){
+	background-color: white;
+}
+
+.row:nth-child(odd) .square:nth-child(odd){
+	background-color: white;
+}
+
+
+
+
