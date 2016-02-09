@@ -108,10 +108,10 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 				$scope.boardArray[fenCount].contents = $scope.pieces[11]
 			}  
 
-
 			else {
 				$scope.boardArray[fenCount].contents = null
 			}
+			
 		}
 	}
 

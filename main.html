@@ -19,18 +19,37 @@
 
 	<body ng-controller = 'chessController'>
 
-	
-		<input type = 'text' placeholder = 'FEN string goes here' ng-model = 'fen'> 
-		<button ng-click = 'parseFen(fen)' class = 'btn btn-danger'>submit</button>
+		<div class="page-header">
+  			<h1>A Gui Chess Interface</h1>
+		</div>
 
-		<div id = "chessBoard">
-			<div ng-repeat = 'row in board.rows' class = 'row'>
-				<div ng-click = 'movePiece($index, square)'ng-repeat = 'square in board.rows[$index].squares' class = 'square'>
-					<img ng-show = 'square.contents' ng-src = '{{ square.contents.image }}'/>
-					{{ square.ID }}
-				</div>
+		<div class = 'container'>
+			<div class = 'row'>
+				<div class = 'col-xs-6'>
+					<div id = "fen-machine">
+						<input type = 'text' style = 'width : 500px; margin-bottom = 25px' placeholder = 'FEN string goes here' ng-model = 'fen'> 
+						<button ng-click = 'parseFen(fen)' class = 'btn btn-primary btn-large' style = "padding-left : 20px; padding-right: 20px; color : white">submit</button>
+					</div>
+				</div>	
 			</div>
 		</div>
+
+		<div class = 'container'>
+			<div class = 'row'>
+				<div class = 'col-md-6 col-xs-12'>
+					<div id = "chessBoard">
+						<div ng-repeat = 'row in board.rows' class = 'chess-row'>
+							<div ng-click = 'movePiece($index, square)'ng-repeat = 'square in board.rows[$index].squares' class = 'square'>
+								<img ng-show = 'square.contents' ng-src = '{{ square.contents.image }}'/>
+								{{ square.ID }}
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+			
+		
 
 			
 		
