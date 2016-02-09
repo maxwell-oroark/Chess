@@ -21,16 +21,29 @@ h1,h2,h3,h4,h5,h6 {
 	border-radius: 5px;
 	padding-top:15px;
 	padding-left:10px;
-	border-bottom: 5px solid #e67e22
+	border-bottom: 5px solid #3498db
 }
 
 #fen-machine {
 	margin: 10px auto 10px 10px;
+	width: 800px;
 }
-#test{
-	height: 50px;
+
+#game-area {
+	height: 850px;
+}
+
+#stats-area {
+	background-color: rgba(52, 152, 219,.30);
+	border: 3px solid rgba(46, 204, 113,.5);
+	height: 800px; 
+	margin-left: 75px;
+}
+
+#captured-pieces {
+	height: 850px;
+	background color: #7f8c8d;
 	width: 100%;
-	background-color: #2980b9;
 }
 
 #chessBoard {

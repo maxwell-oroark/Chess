@@ -24,7 +24,7 @@ chessModule
 			this.contents = contents
 			this.ID = ID
 		}
-		
+
 
 
 		// All my square objects
@@ -105,7 +105,7 @@ chessModule
 
 		var row1 = new Row([a1,b1,c1,d1,e1,f1,g1,h1])
 		var row2 = new Row([a2,b2,c2,d2,e2,f2,g2,h2])
-		var row3 = new Row([a3,b3,c3,d3,d4,d5,d6,d7])
+		var row3 = new Row([a3,b3,c3,d3,e3,f3,g3,h3])
 		var row4 = new Row([a4,b4,c4,d4,e4,f4,g4,h4])
 		var row5 = new Row([a5,b5,c5,d5,e5,f5,g5,h5])
 		var row6 = new Row([a6,b6,c6,d6,e6,f6,g6,h6])
@@ -128,25 +128,14 @@ chessModule
 
 		var gameBoard = new Board([row1, row2, row3,row4,row5,row6,row7,row8],[fileA,fileB,fileC,fileD,fileE,fileF,fileG,fileH])
 		
-		gameBoard.arr = []
-
-		for (var c = 0; c < 8; c++){
-
-			for (var i = 0; i < 8; i++){
-				gameBoard.arr.push(gameBoard.rows[c].squares[i])
-
-			}
-		}
-
 		// A piece constructor
-
-		gameBoard.pieces = []
+		
 
 		function Piece(name, image) {
 			this.name = name;
 			this.image = image;
-			gameBoard.pieces.push(this)
 		}
+
 		var p = new Piece('whitePawn','images/wP.png')
 		var r = new Piece('whiteRook', 'images/wR.png')
 		var n = new Piece('whiteKnight', 'images/wN.png')
@@ -158,7 +147,35 @@ chessModule
 		var N = new Piece('blackKnight', 'images/bN.png')
 		var B = new Piece('blackBishop', 'images/bB.png')
 		var K = new Piece('blackKing', 'images/bK.png')
-		var Q = new Piece('blackQueen', 'images,bQ.png')
+		var Q = new Piece('blackQueen', 'images/bQ.png')
+		
+		gameBoard.pieces = {
+			p : p,
+			r : r,
+			n : n,
+			b : b,
+			k : k,
+			q : q,
+			P : P,
+			R : R,
+			N : N,
+			B : B,
+			K : K,
+			Q : Q,
+			o : null
+		}
+
+		gameBoard.arr = []
+
+		for (var c = 0; c < 8; c++){
+
+			for (var i = 0; i < 8; i++){
+				gameBoard.arr.push(gameBoard.rows[c].squares[i])
+
+			}
+		}
+
+
 		
 
 
