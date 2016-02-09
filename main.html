@@ -18,12 +18,15 @@
 
 
 	<body ng-controller = 'chessController'>
-		<h1> {{ greeting }} </h1>
+
+	
+		<input type = 'text' placeholder = 'FEN string goes here' ng-model = 'fen'> 
+		<button ng-click = 'parseFen(fen)' class = 'btn btn-danger'>submit</button>
 
 		<div id = "chessBoard">
 			<div ng-repeat = 'row in board.rows' class = 'row'>
-				<div ng-click = 'saySq($index, square)'ng-repeat = 'square in board.rows[$index].squares' class = 'square'>
-					<img ng-show = 'square.contents' ng-src = '{{ square.contents.img }}'/>
+				<div ng-click = 'movePiece($index, square)'ng-repeat = 'square in board.rows[$index].squares' class = 'square'>
+					<img ng-show = 'square.contents' ng-src = '{{ square.contents.image }}'/>
 					{{ square.ID }}
 				</div>
 			</div>

@@ -2,20 +2,20 @@ chessModule
 	.factory('chessData',[function(){
 
 		var greeting = 'welcome to my chess game'
-
-		// Gameboard Object
-
-		var gameBoard = {}
-
 		
 		//Board Constructor
 
-		function Board (rows) {
+		function Board (rows, files) {
 			this.rows = rows
+			this.files = files
 		}
 
 		//Row Constructor
 		function Row (squares) {
+			this.squares = squares
+		}
+
+		function File(squares) {
 			this.squares = squares
 		}
 
@@ -24,18 +24,8 @@ chessModule
 			this.contents = contents
 			this.ID = ID
 		}
+		
 
-		// A piece constructor
-
-		var p = {
-			name : 'whitePawn',
-			img : 'images/wP.png',
-		}
-
-		var r = {
-			name : 'whiteRook',
-			img : 'images/wR.png',
-		}
 
 		// All my square objects
 
@@ -48,14 +38,14 @@ chessModule
 		var a7 = new Square(null, 'a7')
 		var a8 = new Square(null, 'a8')
 
-		var b1 = new Square(p, 'b1')
-		var b2 = new Square(p, 'b2')
-		var b3 = new Square(p, 'b3')
-		var b4 = new Square(p, 'b4')
-		var b5 = new Square(p, 'b5')
-		var b6 = new Square(p, 'b6')
-		var b7 = new Square(p, 'b7')
-		var b8 = new Square(p, 'b8')
+		var b1 = new Square(null, 'b1')
+		var b2 = new Square(null, 'b2')
+		var b3 = new Square(null, 'b3')
+		var b4 = new Square(null, 'b4')
+		var b5 = new Square(null, 'b5')
+		var b6 = new Square(null, 'b6')
+		var b7 = new Square(null, 'b7')
+		var b8 = new Square(null, 'b8')
 
 		var c1 = new Square(null, 'c1')
 		var c2 = new Square(null, 'c2')
@@ -113,46 +103,72 @@ chessModule
 
 		// All my row objects
 
-		var row1 = new Row([a1,a2,a3,a4,a5,a6,a7,a8])
-		var row2 = new Row([b1,b2,b3,b4,b5,b6,b7,b8])
-		var row3 = new Row([c1,c2,c3,c4,c5,c6,c7,c8])
-		var row4 = new Row([d1,d2,d3,d4,d5,d6,d7,d8])
-		var row5 = new Row([e1,e2,e3,e4,e5,e6,e7,e8])
-		var row6 = new Row([f1,f2,f3,f4,f5,f6,f7,f8])
-		var row7 = new Row([g1,g2,g3,g4,g5,g6,g7,g8])
-		var row8 = new Row([h1,h2,h3,h4,h5,h6,h7,h8])
+		var row1 = new Row([a1,b1,c1,d1,e1,f1,g1,h1])
+		var row2 = new Row([a2,b2,c2,d2,e2,f2,g2,h2])
+		var row3 = new Row([a3,b3,c3,d3,d4,d5,d6,d7])
+		var row4 = new Row([a4,b4,c4,d4,e4,f4,g4,h4])
+		var row5 = new Row([a5,b5,c5,d5,e5,f5,g5,h5])
+		var row6 = new Row([a6,b6,c6,d6,e6,f6,g6,h6])
+		var row7 = new Row([a7,b7,c7,d7,e7,f7,g7,h7])
+		var row8 = new Row([a8,b8,c8,d8,e8,f8,g8,h8])
+
+		// All my file objects 
+
+		var fileA = new File([a1,a2,a3,a4,a5,a6,a7,a8])
+		var fileB = new File([b1,b2,b3,b4,b5,b6,b7,b8])
+		var fileC = new File([c1,c2,c3,c4,c5,c6,c7,c8])
+		var fileD = new File([d1,d2,d3,d4,d5,d6,d7,d8])
+		var fileE = new File([e1,e2,e3,e4,e5,e6,e7,e8])
+		var fileF = new File([f1,f2,f3,f4,f5,f6,f7,f8])
+		var fileG = new File([g1,g2,g3,g4,g5,g6,g7,g8])
+		var fileH = new File([h1,h2,h3,h4,h5,h6,h7,h8])
+
 
 		// My board object
 
-		var board1 = new Board([row1, row2, row3,row4,row5,row6,row7,row8])
-
-		// Pieces
-
-
+		var gameBoard = new Board([row1, row2, row3,row4,row5,row6,row7,row8],[fileA,fileB,fileC,fileD,fileE,fileF,fileG,fileH])
 		
+		gameBoard.arr = []
 
-		var r = {
-			value: '<img src = "images/wR.png"/>'
+		for (var c = 0; c < 8; c++){
+
+			for (var i = 0; i < 8; i++){
+				gameBoard.arr.push(gameBoard.rows[c].squares[i])
+
+			}
 		}
 
-		var n = {
-			value: '<img src = "images/wn.png"/>'
+		// A piece constructor
+
+		gameBoard.pieces = []
+
+		function Piece(name, image) {
+			this.name = name;
+			this.image = image;
+			gameBoard.pieces.push(this)
 		}
+		var p = new Piece('whitePawn','images/wP.png')
+		var r = new Piece('whiteRook', 'images/wR.png')
+		var n = new Piece('whiteKnight', 'images/wN.png')
+		var b = new Piece('whiteBishop', 'images/wB.png')
+		var k = new Piece('whiteKing', 'images/wK.png')
+		var q = new Piece('whiteQueen', 'images/wQ.png')
+		var P = new Piece('blackPawn', 'images/bP.png')
+		var R = new Piece('blackRook','images/bR.png')
+		var N = new Piece('blackKnight', 'images/bN.png')
+		var B = new Piece('blackBishop', 'images/bB.png')
+		var K = new Piece('blackKing', 'images/bK.png')
+		var Q = new Piece('blackQueen', 'images,bQ.png')
 		
-		board1.pieces = [p,r,n]
 
-		function sqValue(){
-
-		}
-
-		
 
 
 		return {
 
 			greeting : greeting,
-			board : board1,
-			pieces : board1.pieces
+			board : gameBoard,
+			pieces : gameBoard.pieces,
+			boardArray : gameBoard.arr,
 
 		}
 
