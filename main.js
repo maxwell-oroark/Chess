@@ -8,7 +8,7 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 
 	var rows = $scope.board.rows
 	
-	//An array of chess piece objects
+	//An object of chess piece objects -- p : pawn, k : king, etc
 
 	$scope.pieces = chessData.pieces
 
@@ -16,15 +16,10 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 
 	$scope.boardArray = chessData.boardArray
 
-
-
-	// console.log($scope.boardArray)
-
-	console.log($scope.board.rows)
-
 	// console.log($scope.board.rows[q].squares)
 
 	console.log($scope.board)
+	console.log($scope.pieces)
 
 	// This function below results in transporting a piece around, very rudimentary at this stage, need to refactor so that when a piece is grabbed
 	// it understands a) what type of piece it is b) where it is on the board and c) most importantly where it CAN move on the board
@@ -40,7 +35,7 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 			$scope.fromPiece = square.contents
 
 		} else if ($scope.fromPiece){
-
+			square.contents = null
 			square.contents = $scope.fromPiece
 			$scope.fromSquare.contents = null
 			$scope.fromPiece = null
@@ -53,8 +48,6 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 		
 	}
 
-	console.log($scope.board.rows[1].squares[0].contents)
-	console.log($scope.pieces)
 
 	// Attempting to build a fen parser that will set my chess board when passed a legitimate Fen string.
 
@@ -62,41 +55,41 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 
 	$scope.parseFen = function(fenStr){
 		
-		var fenArr = fenStr.split('/')
-		console.log(fenArr)
+		var fenArr = fenStr.split('')
+
+		console.log('before:' + fenArr)
+
+		fenArr = fenArr.map(function(currentValue){
+			var out = []
+			if (!isNaN(parseInt(currentValue))){
+				for (var i = 0; i < currentValue; i++){
+					out.push('o')
+				}
+				console.log('high')
+				return out.join('')
+			} else {
+				return currentValue
+			}
+			
+		}).join('')
+
+		console.log('after:' + fenArr)
+
+		fenArr = fenArr.split('/')
 
 		fenArr.forEach(function(currentValue, Parentindex){
-			console.log(currentValue)
+	
 			currentValue.split('').forEach(function(c, index){
-				if (typeof(c) === 'number'){
-					if (c === 8) {
-						var blankRow = ['o','o','o','o','o','o','o','o']
-							blankRow.forEach(function(curr, innerIndex){
-							rows[Parentindex].squares[innerIndex].contents = angular.copy($scope.pieces['o'])
-							})
-						}
-					else if (c === 7) {
-						var x = ['o','o','o','o','o','o','o']
-						x.forEach(function(curr, innerIndex){
-							rows[Parentindex].squares[innerIndex].contents = angular.copy($scope.pieces[curr])
-						})
-						
-					}
-					else if (c === 6) {
-						var x = ['o','o','o','o','o','o']
-						x.forEach(function(curr, innerIndex){
-							rows[Parentindex].squares[innerIndex].contents = angular.copy($scope.pieces[curr])
-						})	
-					}
-
-				} else {
+				
 				rows[Parentindex].squares[index].contents = angular.copy($scope.pieces[c])
-				}
+				
 			})
-
 		})
-
+	
 	}
+
+
+	
 
 		// for (var q = 0 ; q <= fenArr.length; q++){
 
@@ -162,50 +155,6 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 	// 		}
 		
 	// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }])

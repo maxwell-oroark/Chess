@@ -1,7 +1,5 @@
 chessModule
 	.factory('chessData',[function(){
-
-		var greeting = 'welcome to my chess game'
 		
 		//Board Constructor
 
@@ -24,8 +22,6 @@ chessModule
 			this.contents = contents
 			this.ID = ID
 		}
-
-
 
 		// All my square objects
 
@@ -123,13 +119,11 @@ chessModule
 		var fileG = new File([g1,g2,g3,g4,g5,g6,g7,g8])
 		var fileH = new File([h1,h2,h3,h4,h5,h6,h7,h8])
 
-
 		// My board object
 
 		var gameBoard = new Board([row1, row2, row3,row4,row5,row6,row7,row8],[fileA,fileB,fileC,fileD,fileE,fileF,fileG,fileH])
 		
 		// A piece constructor
-		
 
 		function Piece(name, image) {
 			this.name = name;
@@ -171,18 +165,11 @@ chessModule
 
 			for (var i = 0; i < 8; i++){
 				gameBoard.arr.push(gameBoard.rows[c].squares[i])
-
 			}
 		}
 
-
-		
-
-
-
 		return {
 
-			greeting : greeting,
 			board : gameBoard,
 			pieces : gameBoard.pieces,
 			boardArray : gameBoard.arr,

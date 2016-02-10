@@ -24,6 +24,11 @@ h1,h2,h3,h4,h5,h6 {
 	border-bottom: 5px solid #3498db
 }
 
+.space {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 #fen-machine {
 	margin: 10px auto 10px 10px;
 	width: 800px;
@@ -36,6 +41,7 @@ h1,h2,h3,h4,h5,h6 {
 #stats-area {
 	background-color: rgba(52, 152, 219,.30);
 	border: 3px solid rgba(46, 204, 113,.5);
+	border-radius: 5px;
 	height: 800px; 
 	margin-left: 75px;
 }
@@ -51,6 +57,7 @@ h1,h2,h3,h4,h5,h6 {
 	width: 804px;
 	margin-left:10px;
 	border: 2px solid black;
+	border-radius: 5px;
 	float: left;
 	overflow: hidden;
 }
