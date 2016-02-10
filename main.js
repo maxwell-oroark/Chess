@@ -6,6 +6,11 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 
 	$scope.board = chessData.board
 
+	$scope.fen1 = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR'
+	$scope.fen2 = 'rnbqkbnr/ppp1pppp/8/3p4/8/5NP1/PPPPPP1P/RNBQKB1R'
+	$scope.fen3 = 'rnbqkbnr/ppp2ppp/8/3P4/5p2/5N2/PPPP2PP/RNBQKB1R'
+	$scope.fen4 = 'r4rk1/pppb1ppQ/4p3/4P2n/3P1n1q/2N5/PP2N1PP/RB3RK1'
+
 	var rows = $scope.board.rows
 	
 	//An object of chess piece objects -- p : pawn, k : king, etc
@@ -19,34 +24,74 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 	// console.log($scope.board.rows[q].squares)
 
 	console.log($scope.board)
-	console.log($scope.pieces)
 
-	// This function below results in transporting a piece around, very rudimentary at this stage, need to refactor so that when a piece is grabbed
-	// it understands a) what type of piece it is b) where it is on the board and c) most importantly where it CAN move on the board
+	
+
+	$scope.turn = 'white'
+	$scope.activePiece = null
+	var fromSquare = null
+
+	//click Peice function analyzes information about whether or not an active piece exists,
+	// if not, it makes the selected piece active, if so and the square is different, it moves it to that square and switches
+	// the turn to the other player, if it is the same square it deactives the piece and removes the highlight
+
+
+	$scope.clickPiece = function($index, square){
+		console.log('clickPiece function running')
+			
+		if (square.contents && square.contents.color === $scope.turn && square.contents !== $scope.activePiece){
+			$scope.selectPiece($index,square)
+			fromSquare = square
+		} 
+		else if (square.contents === $scope.activePiece){
+			$scope.deactivatePieces($index,square)
+		}
+		else{
+			$scope.movePiece($index,square)
+			// square.contents = null
+		}
+	}
+
+	$scope.deactivatePieces = function(){
+		$scope.activePiece = null
+		$scope.board.rows.forEach(function(row){
+			row.squares.forEach(function(square){
+				square.active = false
+			})
+		})
+	}
+
+	$scope.selectPiece = function($index, square){
+
+		console.log('selectPiece function running')
+
+		if ((square.contents) && (square.contents !== $scope.activePiece)){
+			$scope.deactivatePieces()
+			$scope.activePiece = square.contents
+			square.active = true
+			console.log ($scope.activePiece)
+		} 
+	}
 
 	$scope.movePiece = function($index, square){
+		console.log('movePiece function running')
+		if ($scope.activePiece){
 
-		console.log('the square I clicked on is ' + square.ID)
-		console.log(square.contents)
+			square.contents = $scope.activePiece
+			$scope.activePiece = null
+			$scope.deactivatePieces()
+			fromSquare.contents = null
 
-		if(square.contents){
-
-			$scope.fromSquare = square
-			$scope.fromPiece = square.contents
-
-		} else if ($scope.fromPiece){
-			square.contents = null
-			square.contents = $scope.fromPiece
-			$scope.fromSquare.contents = null
-			$scope.fromPiece = null
-
+			if($scope.turn === 'white'){
+				$scope.turn = 'black'
+			}
+			else {
+				$scope.turn = 'white'
+			}
 		}
-
-		else {
-			console.log('no piece there dummy')
-		}
-		
 	}
+		
+	
 
 
 	// Attempting to build a fen parser that will set my chess board when passed a legitimate Fen string.
@@ -89,72 +134,6 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 	}
 
 
-	
-
-		// for (var q = 0 ; q <= fenArr.length; q++){
-
-		// 	for(fenCount = 0; fenCount < fenStr.length; fenCount++){
-
-		// 		// White Piece Check Here
-
-		// 		if (fenArr[q][fenCount] === 'p'){
-		// 			console.log(rows[q].squares[fenCount].contents)
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[0]
-		// 		}
-
-		// 		else if (fenArr[q][fenCount] === 'r'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[1]
-		// 		} 
-
-		// 		else if (fenArr[q][fenCount] === 'n'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[2]
-		// 		}
-
-		// 		else if (fenArr[q][fenCount] === 'b'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[3]
-		// 		} 
-
-		// 		else if (fenArr[q][fenCount] === 'k'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[4]
-		// 		}  
-
-		// 		else if (fenArr[q][fenCount] === 'q'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[5]
-		// 		}  
-
-		// 		// Black Piece Check Here
-
-		// 		else if (fenArr[q][fenCount] === 'P'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[6]
-		// 		} 
-
-		// 		else if (fenArr[q][fenCount] === 'R'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[7]
-		// 		}
-
-		// 		else if (fenArr[q][fenCount] === 'N'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[8]
-		// 		} 
-
-		// 		else if (fenArr[q][fenCount] === 'B'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[9]
-		// 		}  
-
-		// 		else if (fenArr[q][fenCount] === 'K'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[10]
-		// 		} 
-
-		// 		else if (fenArr[q][fenCount] === 'Q'){
-		// 			rows[q].squares[fenCount].contents = $scope.pieces[11]
-		// 		}  
-
-		// 		else {
-		// 			rows[q].squares[fenCount].contents = null
-		// 		}
-				
-	// 		}
-		
-	// }
 
 
 }])

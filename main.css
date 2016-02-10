@@ -31,7 +31,21 @@ h1,h2,h3,h4,h5,h6 {
 
 #fen-machine {
 	margin: 10px auto 10px 10px;
-	width: 800px;
+	border-right: 3px solid #95a5a6;
+}
+
+#fen-machine input {
+	width: 75%;
+}
+
+.game-buttons {
+	padding-left: 50px;
+	padding-top: 10px;
+}
+
+.game-buttons button {
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 #game-area {
@@ -51,6 +65,7 @@ h1,h2,h3,h4,h5,h6 {
 	background color: #7f8c8d;
 	width: 100%;
 }
+
 
 #chessBoard {
 	height: 100%;
@@ -82,6 +97,7 @@ h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
 }
 
+
 .chess-row:nth-child(even) .square:nth-child(even){
 	background-color: #95a5a6;
 }
@@ -90,6 +106,9 @@ h1,h2,h3,h4,h5,h6 {
 	background-color: #95a5a6;
 }
 
+.square.highlighted {
+	background-color:#2ecc71 !important;
+}
 
 
 

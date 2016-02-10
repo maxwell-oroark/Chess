@@ -21,6 +21,7 @@ chessModule
 		function Square (contents, ID) {
 			this.contents = contents
 			this.ID = ID
+			this.active = false
 		}
 
 		// All my square objects
@@ -125,23 +126,25 @@ chessModule
 		
 		// A piece constructor
 
-		function Piece(name, image) {
+		function Piece(name, image, color) {
 			this.name = name;
 			this.image = image;
+			this.color = color;
+
 		}
 
-		var p = new Piece('whitePawn','images/wP.png')
-		var r = new Piece('whiteRook', 'images/wR.png')
-		var n = new Piece('whiteKnight', 'images/wN.png')
-		var b = new Piece('whiteBishop', 'images/wB.png')
-		var k = new Piece('whiteKing', 'images/wK.png')
-		var q = new Piece('whiteQueen', 'images/wQ.png')
-		var P = new Piece('blackPawn', 'images/bP.png')
-		var R = new Piece('blackRook','images/bR.png')
-		var N = new Piece('blackKnight', 'images/bN.png')
-		var B = new Piece('blackBishop', 'images/bB.png')
-		var K = new Piece('blackKing', 'images/bK.png')
-		var Q = new Piece('blackQueen', 'images/bQ.png')
+		var p = new Piece('blackPawn', 'images/bP.png', 'black')
+		var r = new Piece('blackRook','images/bR.png', 'black')
+		var n = new Piece('blackKnight', 'images/bN.png', 'black')
+		var b = new Piece('blackBishop', 'images/bB.png', 'black')
+		var k = new Piece('blackKing', 'images/bK.png', 'black')
+		var q = new Piece('blackQueen', 'images/bQ.png', 'black')
+		var P = new Piece('whitePawn','images/wP.png', 'white')
+		var R = new Piece('whiteRook', 'images/wR.png', 'white')
+		var N = new Piece('whiteKnight', 'images/wN.png', 'white')
+		var B = new Piece('whiteBishop', 'images/wB.png', 'white')
+		var K = new Piece('whiteKing', 'images/wK.png', 'white')
+		var Q = new Piece('whiteQueen', 'images/wQ.png', 'white')
 		
 		gameBoard.pieces = {
 			p : p,

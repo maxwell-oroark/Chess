@@ -27,12 +27,18 @@
 
 		<div class = 'container'>
 			<div class = 'row'>
-				<div class = 'col-xs-12'>
+				<div class = 'col-xs-6 col-md-6'>
 					<div id = "fen-machine">
-						<input type = 'text' style = 'width : 500px; margin-bottom : 25px; margin-left : 15px' placeholder = 'FEN string goes here' ng-model = 'fen'> 
+						<input type = 'text' placeholder = 'FEN string goes here' ng-model = 'fen'> 
 						<button ng-click = 'parseFen(fen)' class = 'btn btn-primary'>submit</button>
 					</div>
 				</div>	
+				<div class = 'col-xs-6 col-md-6 game-buttons'>
+					<button ng-click = 'parseFen(fen1)' class = 'btn btn-info btn-sm'>New Game</button>
+					<button ng-click = 'parseFen(fen2)' class = 'btn btn-warning btn-sm'>King's Indian</button>
+					<button ng-click = 'parseFen(fen3)' class = 'btn btn-warning btn-sm'>King's Gambit Accepted</button>
+					<button ng-click = 'parseFen(fen4)' class = 'btn btn-danger btn-sm'>Checkmate Example</button>
+				</div>
 			</div>
 		</div>
 
@@ -42,7 +48,7 @@
 					<div id = 'play-area'>
 						<div id = "chessBoard">
 							<div ng-repeat = 'row in board.rows' class = 'chess-row'>
-								<div ng-click = 'movePiece($index, square)'ng-repeat = 'square in board.rows[$index].squares' class = 'square'>
+								<div ng-class = '{highlighted : square.active}' ng-click = 'clickPiece($index, square)'ng-repeat = 'square in board.rows[$index].squares' class = 'square'>
 									<img ng-show = 'square.contents' ng-src = '{{ square.contents.image }}'/>
 									{{ square.ID }}
 									{{ square.$index }}
