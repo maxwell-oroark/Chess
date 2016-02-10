@@ -25,11 +25,15 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 
 	console.log($scope.board)
 
+
+	// initialize some variables and definitions
+
 	
 
 	$scope.turn = 'white'
 	$scope.activePiece = null
 	var fromSquare = null
+	$scope.capturedPieces = []
 
 	//click Peice function analyzes information about whether or not an active piece exists,
 	// if not, it makes the selected piece active, if so and the square is different, it moves it to that square and switches
@@ -75,13 +79,15 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 
 	$scope.movePiece = function($index, square){
 		console.log('movePiece function running')
-		if ($scope.activePiece){
+		if ($scope.activePiece && square.contents === null){
 
 			square.contents = $scope.activePiece
 			$scope.activePiece = null
 			$scope.deactivatePieces()
 			fromSquare.contents = null
 
+
+			//change move below
 			if($scope.turn === 'white'){
 				$scope.turn = 'black'
 			}
@@ -89,10 +95,24 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 				$scope.turn = 'white'
 			}
 		}
-	}
-		
-	
+		else if ($scope.activePiece && square.contents !== null){
+			console.log('capturing...')
+			$scope.capturedPieces.push(square.contents)
+			square.contents = $scope.activePiece
+			$scope.deactivatePieces()
+			fromSquare.contents = null
+			console.log($scope.capturedPieces)
 
+			//change move below
+			if($scope.turn === 'white'){
+				$scope.turn = 'black'
+			}
+			else {
+				$scope.turn = 'white'
+			}
+
+		}
+	}
 
 	// Attempting to build a fen parser that will set my chess board when passed a legitimate Fen string.
 
@@ -102,7 +122,7 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 		
 		var fenArr = fenStr.split('')
 
-		console.log('before:' + fenArr)
+		// console.log('before:' + fenArr)
 
 		fenArr = fenArr.map(function(currentValue){
 			var out = []
@@ -118,7 +138,7 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 			
 		}).join('')
 
-		console.log('after:' + fenArr)
+		// console.log('after:' + fenArr)
 
 		fenArr = fenArr.split('/')
 
@@ -130,6 +150,9 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 				
 			})
 		})
+
+		$scope.capturedPieces = []
+		$scope.turn = 'white'
 	
 	}
 

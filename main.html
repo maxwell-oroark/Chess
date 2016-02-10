@@ -12,7 +12,7 @@
 		<!-- JAVASCRIPT -->
 
 		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js' type = 'text/javascript'></script>
-		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js'></script>
+		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js'></script>
 		<script src = 'main.js' type = 'text/javascript'></script>
 		<script src = 'board.js' type = 'text/javascript'></script>
 
@@ -21,9 +21,14 @@
 
 	<body ng-controller = 'chessController'>
 
+		<!-- header re-design to come -->
+
 		<div class="page-header">
   			<h1><span class = 'space'></span><small style = 'color: white;'>a chess /</small><span class = 'space'></span><small>graphic</small><small> user</small> <small>interface /</small><small style = 'color : #3498db'><span class = 'space'></span>running on pure javascript </small></h1>
+  			<h5 class = 'au-sig pull-right'>by Maxwell O'Roark</h5>
 		</div>
+
+		<!-- header re-design to come -->
 
 		<div class = 'container'>
 			<div class = 'row'>
@@ -60,7 +65,9 @@
 
 				<div class = 'col-xs-12 col-md-4'>
 					<div id = 'stats-area'>
-
+						<div class = 'capture' ng-repeat = 'piece in capturedPieces'>
+							<img ng-show = 'capturedPieces' ng-src = '{{piece.image}}'/>
+						</div>
 					</div>
 				</div>	
 			</div>

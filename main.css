@@ -23,6 +23,10 @@ h1,h2,h3,h4,h5,h6 {
 	padding-left:10px;
 	border-bottom: 5px solid #3498db
 }
+.au-sig {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
 
 .space {
 	padding-left: 15px;
@@ -57,6 +61,7 @@ h1,h2,h3,h4,h5,h6 {
 	border: 3px solid rgba(46, 204, 113,.5);
 	border-radius: 5px;
 	height: 800px; 
+	width: 100%;
 	margin-left: 75px;
 }
 
@@ -98,16 +103,37 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
-.chess-row:nth-child(even) .square:nth-child(even){
+.chess-row:nth-child(even) .square:nth-child(odd){
 	background-color: #95a5a6;
 }
 
-.chess-row:nth-child(odd) .square:nth-child(odd){
+.chess-row:nth-child(odd) .square:nth-child(even){
 	background-color: #95a5a6;
 }
 
 .square.highlighted {
-	background-color:#2ecc71 !important;
+	background-image: radial-gradient(#1abc9c, #2ecc71);
+
+/*	background-color:#2ecc71 !important
+    border: 2px solid #2ecc71;*/
+}
+
+/*Captured Pieces Styles*/
+
+.capture {
+	display: inline-block;
+	height: 100px;
+	width: 100px;
+	margin: 7px;
+	margin-left: 10px;
+	vertical-align: middle
+
+}
+
+.capture img {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: 
 }
 
 
