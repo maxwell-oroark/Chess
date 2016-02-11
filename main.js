@@ -1,21 +1,19 @@
 var chessModule = angular.module('chess', [])
 
-chessModule.controller('chessController', ['$scope','chessData', function($scope, chessData){
+chessModule.controller('chessController', ['$scope','chessData','gameLib', function($scope, chessData, gameLib){
 
 	// imports board object which contains 'rows', 'files', 'squares', and an array of 64 squares.
 
 	$scope.board = chessData.board
+	$scope.games = gameLib.games
+	$scope.endgames = gameLib.endgames
+	$scope.famousgames = gameLib.famousgames
+	$scope.pieces = chessData.pieces
 
-	$scope.fen1 = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR'
-	$scope.fen2 = 'rnbqkbnr/ppp1pppp/8/3p4/8/5NP1/PPPPPP1P/RNBQKB1R'
-	$scope.fen3 = 'rnbqkbnr/ppp2ppp/8/3P4/5p2/5N2/PPPP2PP/RNBQKB1R'
-	$scope.fen4 = 'r4rk1/pppb1ppQ/4p3/4P2n/3P1n1q/2N5/PP2N1PP/RB3RK1'
+	console.log($scope.games)
+	console.log($scope.games[0].position)
 
 	var rows = $scope.board.rows
-	
-	//An object of chess piece objects -- p : pawn, k : king, etc
-
-	$scope.pieces = chessData.pieces
 
 	// direct access to board array object
 
@@ -34,6 +32,16 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 	$scope.activePiece = null
 	var fromSquare = null
 	$scope.capturedPieces = []
+
+	//Switch Board Function
+
+	$scope.switchBlack = false
+	$scope.switchBack = false
+
+	$scope.switchBoard = function(){
+		$scope.switchBlack = !$scope.switchBlack
+		$scope.switchBack = !$scope.switchBack
+	}
 
 	//click Peice function analyzes information about whether or not an active piece exists,
 	// if not, it makes the selected piece active, if so and the square is different, it moves it to that square and switches
@@ -145,7 +153,6 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 		fenArr.forEach(function(currentValue, Parentindex){
 	
 			currentValue.split('').forEach(function(c, index){
-				
 				rows[Parentindex].squares[index].contents = angular.copy($scope.pieces[c])
 				
 			})
