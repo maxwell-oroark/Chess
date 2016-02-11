@@ -10,8 +10,7 @@ chessModule.controller('chessController', ['$scope','chessData','gameLib', funct
 	$scope.famousgames = gameLib.famousgames
 	$scope.pieces = chessData.pieces
 
-	console.log($scope.games)
-	console.log($scope.games[0].position)
+	$scope.newGameFen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR'
 
 	var rows = $scope.board.rows
 

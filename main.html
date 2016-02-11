@@ -64,10 +64,12 @@
 					            <li role="separator" class="divider"></li>
 			          		</ul>  
 			        	</li>	
+			        	
 
 		      		</ul>
 		    	</div><!-- /.navbar-collapse -->
 		  	</div><!-- /.container-fluid -->
+
 		</nav>
 
 <!-- Start of main content -->
@@ -81,7 +83,7 @@
 					</div>
 				</div>
 				<div class = 'main-game-controls col-xs-6 col-md-6'>
-					<button style = "margin-left: 18px;" ng-click = 'parseFen(games[0].position)' class = 'btn btn-info'>New Game</button>
+					<button style = "margin-left: 18px;" ng-click = 'parseFen(newGameFen)' class = 'btn btn-info'>New Game</button>
 					<button ng-click = 'switchBoard()' class = 'btn btn-warning'>Switch Sides</button>
 				</div>	
 			</div>
@@ -89,7 +91,7 @@
 
 		<div id = 'game-area' class = 'container'>
 			<div class = 'row'>
-				<div class = 'col-xs-12 col-md-8 '>
+				<div class = 'col-md-12 col-lg-8'>
 					<div id = 'play-area'>
 						<div id = "chessBoard" ng-class = '{switch : switchBlack}'>
 							<div ng-repeat = 'row in board.rows' class = 'chess-row'>
@@ -103,7 +105,7 @@
 					</div>
 				</div>
 
-				<div class = 'col-xs-12 col-md-4'>
+				<div class = 'col-md-12 col-lg-4'>
 					<div id = 'stats-area'>
 
 						<div class = 'capture' ng-repeat = 'piece in capturedPieces'>

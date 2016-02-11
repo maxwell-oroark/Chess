@@ -206,5 +206,60 @@ h1,h2,h3,h4,h5,h6 {
 	text-align: 
 }
 
+@media (min-width: 400px) and (max-width: 1200px) {
+		#stats-area {
+		float: left;
+		margin-top: 50px;
+		margin-left: 0px;
+		height: 300px; 
+		width: 804px;
+		}
+
+	#game-area{
+		width:810px;
+	}
+
+	#chessBoard {
+			margin: 0;
+	}
+
+	.main-game-controls {
+		right: -173px;
+	}
+
+	#fen-machine {
+		padding-left: 72px;
+	}
+
+	.emerald {
+	color: #2ecc71;
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 1em;
+	}
+	.grey {
+		color: #7f8c8d;
+		display: inline-block;
+		margin-right: 10px;
+		font-size: 1em;
+	}
+	.blue {
+		color: #3498db ;
+		display: inline-block;
+		margin-right: 10px;
+		font-size: 1em;
+	}
+}
+
+@media (min-width: 400px) and (max-width: 1000px){
+	.emerald, .grey, .blue {
+		display: none;
+	}
+		
+
+
+ }
+	
+
 
 
