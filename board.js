@@ -100,14 +100,14 @@ chessModule
 
 		// All my row objects
 
-		var row1 = new Row([a1,b1,c1,d1,e1,f1,g1,h1])
-		var row2 = new Row([a2,b2,c2,d2,e2,f2,g2,h2])
-		var row3 = new Row([a3,b3,c3,d3,e3,f3,g3,h3])
-		var row4 = new Row([a4,b4,c4,d4,e4,f4,g4,h4])
-		var row5 = new Row([a5,b5,c5,d5,e5,f5,g5,h5])
-		var row6 = new Row([a6,b6,c6,d6,e6,f6,g6,h6])
-		var row7 = new Row([a7,b7,c7,d7,e7,f7,g7,h7])
-		var row8 = new Row([a8,b8,c8,d8,e8,f8,g8,h8])
+		var row8 = new Row([a1,b1,c1,d1,e1,f1,g1,h1])
+		var row7 = new Row([a2,b2,c2,d2,e2,f2,g2,h2])
+		var row6 = new Row([a3,b3,c3,d3,e3,f3,g3,h3])
+		var row5 = new Row([a4,b4,c4,d4,e4,f4,g4,h4])
+		var row4 = new Row([a5,b5,c5,d5,e5,f5,g5,h5])
+		var row3 = new Row([a6,b6,c6,d6,e6,f6,g6,h6])
+		var row2 = new Row([a7,b7,c7,d7,e7,f7,g7,h7])
+		var row1 = new Row([a8,b8,c8,d8,e8,f8,g8,h8])
 
 		// All my file objects 
 

@@ -12,17 +12,41 @@ body {
 h1,h2,h3,h4,h5,h6 {
 	margin: 0;
 }
-
-.page-header {
-	background-color: #1abc9c;
-	color: #ecf0f1;
-	margin-top: 0;
-	height: 75px;
-	border-radius: 5px;
-	padding-top:15px;
-	padding-left:10px;
-	border-bottom: 5px solid #3498db
+.glyphicon.glyphicon-knight {
+	font-size: 20px;
 }
+.emerald {
+	color: #2ecc71;
+	display: inline-block;
+	margin-right: 10px;
+}
+.grey {
+	color: #7f8c8d;
+	display: inline-block;
+	margin-right: 10px;
+}
+.blue {
+	color: #3498db ;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.navbar-header {
+	color : #777;
+	padding-top : 5px;
+	padding-bottom: 5px;
+}
+
+.navbar-header h4 {
+	padding-top: 15px;
+}
+
+#openings-dropdown {
+	padding: 7px;
+	margin-right: 100px;
+	float: right;
+}
+
 .au-sig {
 	margin-right: 10px;
 	margin-bottom: 10px;

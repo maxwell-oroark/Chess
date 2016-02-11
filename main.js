@@ -130,7 +130,7 @@ chessModule.controller('chessController', ['$scope','chessData', function($scope
 				for (var i = 0; i < currentValue; i++){
 					out.push('o')
 				}
-				console.log('high')
+				console.log('evaluating fen...')
 				return out.join('')
 			} else {
 				return currentValue

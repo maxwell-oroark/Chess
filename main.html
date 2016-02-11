@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html ng-app = 'chess'>
 	<head>
-		<!-- CSS -->
-		<!-- <link href = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css' type = 'text/css' rel = 'stylesheet' > -->
-		<link href= 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css' type = 'text/css' rel = 'stylesheet'>
-
-		<link href = 'main.css' type ='text/css' rel = 'stylesheet'>
-		<!-- LATO FONT -->
-		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-
 		<!-- JAVASCRIPT -->
 
 		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js' type = 'text/javascript'></script>
-		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js'></script>
+		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js'></script>
+		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js'></script>
 		<script src = 'main.js' type = 'text/javascript'></script>
 		<script src = 'board.js' type = 'text/javascript'></script>
+		<!-- CSS -->
+		<link href= 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css' type = 'text/css' rel = 'stylesheet'>
+		<link href = 'main.css' type ='text/css' rel = 'stylesheet'>
+		<!-- LATO FONT -->
+		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
 	</head>
 
@@ -23,10 +21,35 @@
 
 		<!-- header re-design to come -->
 
-		<div class="page-header">
-  			<h1><span class = 'space'></span><small style = 'color: white;'>a chess /</small><span class = 'space'></span><small>graphic</small><small> user</small> <small>interface /</small><small style = 'color : #3498db'><span class = 'space'></span>running on pure javascript </small></h1>
-  			<h5 class = 'au-sig pull-right'>by Maxwell O'Roark</h5>
-		</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"><span class = "glyphicon glyphicon-knight"></span></a>
+				</div>
+				<div class = 'navbar-header'>
+					<h4 class = 'emerald'>a chess/ </h4><h4 class = 'grey'> graphic user interface/ </h4><h4 class = 'blue'> running on pure javascript</h4>
+				</div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      		<ul class="nav navbar-nav" id = 'openings-dropdown' >
+			        	<li class="dropdown">
+			          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Openings<span class="caret"></span></a>
+				          	<ul class="dropdown-menu">
+					            <li ng-click = 'parseFen(fen2)'><a href = "#">King's Indian</a></li>
+					            <li ng-click = 'parseFen(fen3)'><a href="#">King's Gambit Accepted</a></li>
+					            <li ng-click = 'parseFen(fen4)'><a href="#">Checkmate Example</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">Rolling Rook Checkmate</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="#">Checkmate with Two Bishops></a></li>
+				          	</ul>
+			        	</li>
+		      		</ul>
+		    	</div><!-- /.navbar-collapse -->
+		  	</div><!-- /.container-fluid -->
+		</nav>
 
 		<!-- header re-design to come -->
 
@@ -38,12 +61,6 @@
 						<button ng-click = 'parseFen(fen)' class = 'btn btn-primary'>submit</button>
 					</div>
 				</div>	
-				<div class = 'col-xs-6 col-md-6 game-buttons'>
-					<button ng-click = 'parseFen(fen1)' class = 'btn btn-info btn-sm'>New Game</button>
-					<button ng-click = 'parseFen(fen2)' class = 'btn btn-warning btn-sm'>King's Indian</button>
-					<button ng-click = 'parseFen(fen3)' class = 'btn btn-warning btn-sm'>King's Gambit Accepted</button>
-					<button ng-click = 'parseFen(fen4)' class = 'btn btn-danger btn-sm'>Checkmate Example</button>
-				</div>
 			</div>
 		</div>
 
