@@ -6,13 +6,13 @@
 		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js' type = 'text/javascript'></script>
 		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js'></script>
 		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js'></script>
-		<script src = 'main.js' type = 'text/javascript'></script>
-		<script src = 'board.js' type = 'text/javascript'></script>
-		<script src = 'library.js' type = 'text/javascript'></script>
+		<script src = 'javascripts/main.js' type = 'text/javascript'></script>
+		<script src = 'javascripts/board.js' type = 'text/javascript'></script>
+		<script src = 'javascripts/library.js' type = 'text/javascript'></script>
 
 		<!-- CSS -->
 		<link href= 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css' type = 'text/css' rel = 'stylesheet'>
-		<link href = 'main.css' type ='text/css' rel = 'stylesheet'>
+		<link href = 'css/main.css' type ='text/css' rel = 'stylesheet'>
 		<!-- LATO FONT -->
 		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
@@ -37,12 +37,12 @@
 		      		<ul class="nav navbar-nav" id = 'openings-dropdown' >
 
 			        	<!-- Collection of openings displayed in the dropdown -->
-			        	
+
 			        	<li class="dropdown">
 			          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Openings<span class="caret"></span></a>
 				          	<ul class="dropdown-menu">
 					            <li ng-repeat = 'game in games' ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
-				          	</ul>  	
+				          	</ul>
 			        	</li>
 
 			        	<!-- Another dropdown featuring an array of end game positions -->
@@ -52,8 +52,8 @@
 			        			<ul class="dropdown-menu">
 						            <li ng-repeat = 'game in endgames'ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
 						            <li role="separator" class="divider"></li>
-				          		</ul>  
-				        </li>	
+				          		</ul>
+				        </li>
 
 				        <!-- Another dropdown featuring an array of Famous Games!! -->
 
@@ -62,9 +62,9 @@
 		        			<ul class="dropdown-menu">
 					            <li ng-repeat = 'game in famousgames' ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
 					            <li role="separator" class="divider"></li>
-			          		</ul>  
-			        	</li>	
-			        	
+			          		</ul>
+			        	</li>
+
 
 		      		</ul>
 		    	</div><!-- /.navbar-collapse -->
@@ -78,14 +78,14 @@
 			<div class = 'row'>
 				<div class = 'col-xs-6 col-md-6'>
 					<div id = "fen-machine">
-						<input type = 'text' placeholder = 'FEN string goes here' ng-model = 'fen'> 
+						<input type = 'text' placeholder = 'FEN string goes here' ng-model = 'fen'>
 						<button ng-click = 'parseFen(fen)' class = 'fenStrSub btn btn-primary'>submit</button>
 					</div>
 				</div>
 				<div class = 'main-game-controls col-xs-6 col-md-6'>
 					<button style = "margin-left: 18px;" ng-click = 'parseFen(newGameFen)' class = 'btn btn-info'>New Game</button>
 					<button ng-click = 'switchBoard()' class = 'btn btn-warning'>Switch Sides</button>
-				</div>	
+				</div>
 			</div>
 		</div>
 
@@ -112,15 +112,15 @@
 							<img ng-show = 'capturedPieces' ng-src = '{{piece.image}}'/>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</div>
-			
-		
 
-			
-		
-		
+
+
+
+
+
 	</body>
 
 
