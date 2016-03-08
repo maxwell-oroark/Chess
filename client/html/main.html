@@ -1,78 +1,4 @@
-<!DOCTYPE html>
-<html ng-app = "chess">
-	<head>
-		<!-- JAVASCRIPT -->
 
-		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js' type = 'text/javascript'></script>
-		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js'></script>
-		<script src = 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js'></script>
-		<script src = '../javascripts/main.js' type = 'text/javascript'></script>
-		<script src = '../javascripts/board.js' type = 'text/javascript'></script>
-		<script src = '../javascripts/library.js' type = 'text/javascript'></script>
-
-		<!-- CSS -->
-		<link href= '../css/spaceship.bootstrap.min.css' type = 'text/css' rel = 'stylesheet'>
-		<link href = '../css/main.css' type ='text/css' rel = 'stylesheet'>
-		<!-- LATO FONT -->
-		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-
-	</head>
-
-
-	<body ng-controller = 'chessController'>
-
-
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<!-- <a class="navbar-brand" href="#"><span class = "glyphicon glyphicon-knight"></span></a> -->
-				</div>
-				<div class = 'navbar-header'>
-					<h4 class = 'emerald'>a chess/ </h4><h4 class = 'grey'> graphic user interface/ </h4><h4 class = 'blue'> powered by pure javascript</h4>
-				</div>
-
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      		<ul class="nav navbar-nav" id = 'openings-dropdown' >
-
-			        	<!-- Collection of openings displayed in the dropdown -->
-
-			        	<li class="dropdown">
-			          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Openings<span class="caret"></span></a>
-				          	<ul class="dropdown-menu">
-					            <li ng-repeat = 'game in games' ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
-				          	</ul>
-			        	</li>
-
-			        	<!-- Another dropdown featuring an array of end game positions -->
-
-			        	<li class = 'dropdown'>
-			        		<a href='#' class = 'dropdown-toggle' data-toggle = 'dropdown' role = 'button'aria-haspopup="true" aria-expanded="false">End Games<span class="caret"></span></a>
-			        			<ul class="dropdown-menu">
-						            <li ng-repeat = 'game in endgames'ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
-						            <li role="separator" class="divider"></li>
-				          		</ul>
-				        </li>
-
-				        <!-- Another dropdown featuring an array of Famous Games!! -->
-
-			        	<li class = 'dropdown'>
-		        		<a href='#' class = 'dropdown-toggle' data-toggle = 'dropdown' role = 'button'aria-haspopup="true" aria-expanded="false">Famous Games<span class="caret"></span></a>
-		        			<ul class="dropdown-menu">
-					            <li ng-repeat = 'game in famousgames' ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
-					            <li role="separator" class="divider"></li>
-			          		</ul>
-			        	</li>
-
-
-		      		</ul>
-		    	</div><!-- /.navbar-collapse -->
-		  	</div><!-- /.container-fluid -->
-
-		</nav>
-
-<!-- Start of main content -->
 
 		<div class = 'container'>
 			<div class = 'row'>
@@ -115,6 +41,3 @@
 				</div>
 			</div>
 		</div>
-
-	</body>
-</html>

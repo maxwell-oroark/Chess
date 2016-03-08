@@ -16,11 +16,12 @@ var app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+//leveraging static to serve all content
+// app.use(express.static(__dirname + '/../client/html'));
 //Better for grabbing static files
 app.use(express.static(path.join(__dirname, '../client')))
 
-
+console.log(__dirname)
 // app.get('/', function(req, res){
 //   res.sendFile('main.html', {root : '../client/html/'})
 // });
@@ -31,6 +32,11 @@ var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/chessData')
 // Routes \\
 app.use("/api", apiRoutes)
+
+app.get('/', function(req, res){
+  console.log('/ route firing')
+  res.sendFile('shell.html', {root : './client/html'})
+});
 
 // Creating Server and Listening for Connections \\
 var port = 3000

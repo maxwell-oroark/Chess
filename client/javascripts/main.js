@@ -1,4 +1,26 @@
-var chessModule = angular.module('chess', ["authFactory"])
+var chessModule = angular.module('chess', ["authFactory", "ngRoute"])
+
+// Next, we need to tell our module we're going to be routing using ngRoute
+// and define those routes
+angular.module('chess')
+	.config(function($routeProvider){
+		// $routeProvider is a service contained on ngRoute
+		// Must also use the directive ng-view
+		$routeProvider
+			.when('/', {
+				templateUrl : '/login.html', // route on SERVER where the template file lives
+				controller  : 'loginCtrl'  // name of angular CONTROLLER to use with the template
+			})
+			.when('/home', {
+				templateUrl : '/html/main.html',
+				controller : 'chessController'
+			})
+
+	})
+
+function loginCtrl($scope){
+		console.log('I am the loginCtrl!')
+	}
 
 chessModule.controller('chessController', ['$scope','chessData','gameLib', function($scope, chessData, gameLib){
 
