@@ -2,7 +2,6 @@ var chessModule = angular.module('chess')
 
 chessModule
 	.controller('loginCtrl', ['$scope', '$http', 'Auth', '$location', function($scope, $http, $Auth, $location){
-		console.log('work?')
 
 		//Angular routing on LOG IN.  Need to develop bad login error handling.
 		$scope.login = function(){
