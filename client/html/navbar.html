@@ -1,0 +1,49 @@
+<nav ng-controller = "chessController" class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#"><span class = "glyphicon glyphicon-knight"></span></a> -->
+    </div>
+    <div class = 'navbar-header'>
+      <h4 class = 'emerald'>a chess/ </h4><h4 class = 'grey'> graphic user interface/ </h4><h4 class = 'blue'> powered by pure javascript</h4>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav" id = 'openings-dropdown' >
+
+            <!-- Collection of openings displayed in the dropdown -->
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Openings<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li ng-repeat = 'game in games' ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
+                </ul>
+            </li>
+
+            <!-- Another dropdown featuring an array of end game positions -->
+
+            <li class = 'dropdown'>
+              <a href='#' class = 'dropdown-toggle' data-toggle = 'dropdown' role = 'button'aria-haspopup="true" aria-expanded="false">End Games<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li ng-repeat = 'game in endgames'ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
+                    <li role="separator" class="divider"></li>
+                  </ul>
+            </li>
+
+            <!-- Another dropdown featuring an array of Famous Games!! -->
+
+            <li class = 'dropdown'>
+            <a href='#' class = 'dropdown-toggle' data-toggle = 'dropdown' role = 'button'aria-haspopup="true" aria-expanded="false">Famous Games<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li ng-repeat = 'game in famousgames' ng-click = 'parseFen(game.position)'><a href = "#">{{game.name}}</a></li>
+                  <li role="separator" class="divider"></li>
+                </ul>
+            </li>
+
+
+          </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+
+  </nav>

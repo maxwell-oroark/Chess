@@ -1,4 +1,26 @@
-var chessModule = angular.module('chess', [])
+var chessModule = angular.module('chess', ["authFactory", "ngRoute"])
+
+// Next, we need to tell our module we're going to be routing using ngRoute
+// and define those routes
+angular.module('chess')
+	.config(function($routeProvider){
+		// $routeProvider is a service contained on ngRoute
+		// Must also use the directive ng-view
+		$routeProvider
+			.when('/', {
+				templateUrl : '/login.html', // route on SERVER where the template file lives
+				controller  : 'loginCtrl'  // name of angular CONTROLLER to use with the template
+			})
+			.when('/home', {
+				templateUrl : '/html/main.html',
+				controller : 'chessController'
+			})
+
+	})
+
+function loginCtrl($scope){
+		console.log('I am the loginCtrl!')
+	}
 
 chessModule.controller('chessController', ['$scope','chessData','gameLib', function($scope, chessData, gameLib){
 
@@ -22,10 +44,7 @@ chessModule.controller('chessController', ['$scope','chessData','gameLib', funct
 
 	console.log($scope.board)
 
-
 	// initialize some variables and definitions
-
-	
 
 	$scope.turn = 'white'
 	$scope.activePiece = null
@@ -42,18 +61,19 @@ chessModule.controller('chessController', ['$scope','chessData','gameLib', funct
 		$scope.switchBack = !$scope.switchBack
 	}
 
-	//click Peice function analyzes information about whether or not an active piece exists,
+
+	//click Piece function analyzes information about whether or not an active piece exists,
 	// if not, it makes the selected piece active, if so and the square is different, it moves it to that square and switches
 	// the turn to the other player, if it is the same square it deactives the piece and removes the highlight
 
 
 	$scope.clickPiece = function($index, square){
 		console.log('clickPiece function running')
-			
+
 		if (square.contents && square.contents.color === $scope.turn && square.contents !== $scope.activePiece){
 			$scope.selectPiece($index,square)
 			fromSquare = square
-		} 
+		}
 		else if (square.contents === $scope.activePiece){
 			$scope.deactivatePieces($index,square)
 		}
@@ -81,7 +101,7 @@ chessModule.controller('chessController', ['$scope','chessData','gameLib', funct
 			$scope.activePiece = square.contents
 			square.active = true
 			console.log ($scope.activePiece)
-		} 
+		}
 	}
 
 	$scope.movePiece = function($index, square){
@@ -126,7 +146,7 @@ chessModule.controller('chessController', ['$scope','chessData','gameLib', funct
 	$scope.fen =  ''
 
 	$scope.parseFen = function(fenStr){
-		
+
 		var fenArr = fenStr.split('')
 
 		// console.log('before:' + fenArr)
@@ -142,7 +162,7 @@ chessModule.controller('chessController', ['$scope','chessData','gameLib', funct
 			} else {
 				return currentValue
 			}
-			
+
 		}).join('')
 
 		// console.log('after:' + fenArr)
@@ -150,20 +170,19 @@ chessModule.controller('chessController', ['$scope','chessData','gameLib', funct
 		fenArr = fenArr.split('/')
 
 		fenArr.forEach(function(currentValue, Parentindex){
-	
+
 			currentValue.split('').forEach(function(c, index){
 				rows[Parentindex].squares[index].contents = angular.copy($scope.pieces[c])
-				
+
 			})
 		})
 
 		$scope.capturedPieces = []
 		$scope.turn = 'white'
-	
+
 	}
 
 
 
 
 }])
-

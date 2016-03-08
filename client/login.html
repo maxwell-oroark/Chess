@@ -1,0 +1,21 @@
+<div class = "container">
+	<div class = "row">
+		<div class = 'col-xs-4-offset-3'>
+	    <h4>Existing Users</h4>
+    	<form ng-submit="login()">
+          <input type="text" ng-model="loginForm.username" placeholder="Username"/>
+          <input type="password" ng-model="loginForm.password" placeholder="Password"/>
+          <input type="submit"/>
+      </form>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = 'col-xs-4-offset-3'>
+      <h4>Register</h4>
+      <form ng-submit="signup()">
+          <input type="text" ng-model="signupForm.username" placeholder="Username"/>
+          <input type="password" ng-model="signupForm.password" placeholder="Password"/>
+          <input type="submit"/>
+      </form>
+		</div>
+	</div>
