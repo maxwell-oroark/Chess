@@ -1,4 +1,4 @@
-var chessModule = angular.module('chess', [])
+var chessModule = angular.module('chess', ["authFactory"])
 
 chessModule.controller('chessController', ['$scope','chessData','gameLib', function($scope, chessData, gameLib){
 
