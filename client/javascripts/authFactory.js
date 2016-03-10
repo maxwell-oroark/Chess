@@ -8,14 +8,14 @@
     .factory('AuthInterceptor', AuthInterceptor)
   // inject the depencies to use for each factory
 
-  Auth.$inject = ['$http', '$q', 'AuthToken']
+  Auth.$inject = ['$http', '$q', 'AuthToken', '$location']
   AuthToken.$inject = ['$window']
   AuthInterceptor.$inject = ['$q', '$location', 'AuthToken']
 
 // ===================================
  // Authentication Factory's
  // ===================================
- function Auth ($http, $q, AuthToken) {
+ function Auth ($http, $q, AuthToken, $location) {
    // Empty object to return
    var authFactory = {}
    // Log in a user
@@ -23,8 +23,14 @@
      return $http.post('http://localhost:3000/api/login', {username: username, password: password})
        .then(function (data) {
          console.log("hello", data)
-         AuthToken.setToken(data.token);
-         return data
+
+         if(data.data.token){
+         AuthToken.setToken(data.data.token);
+         $location.url('/home')
+       }
+       else {
+         $location.url('/')
+       }
        })
    }
    // log a user out by clearing the token
@@ -37,6 +43,7 @@
      if (AuthToken.getToken())
        return true
      else
+      	$location.url('/')
        return false
    }
    // get the logged in user
