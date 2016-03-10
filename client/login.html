@@ -2,7 +2,7 @@
 	<div class = "row">
 		<div class = 'col-xs-6 col-xs-offset-3'>
 	    <h4>Existing Users</h4>
-    	<form ng-submit="login()">
+    	<form class = "login" ng-submit="login()">
           <input type="text" ng-model="loginForm.username" placeholder="Username"/>
           <input type="password" ng-model="loginForm.password" placeholder="Password"/>
           <input type="submit"/>
@@ -12,10 +12,16 @@
 	<div class = "row">
 		<div class = 'col-xs-6 col-xs-offset-3'>
       <h4>Register</h4>
-      <form ng-submit="signup()">
+      <form class = "login" ng-submit="signup()">
           <input type="text" ng-model="signupForm.username" placeholder="Username"/>
           <input type="password" ng-model="signupForm.password" placeholder="Password"/>
           <input type="submit"/>
       </form>
 		</div>
-	</div>
+
+	<footer>
+		<p>application developed and designed by Maxwell O'Roark 2016</p>
+		<p>email : m.d.oroark@gmail.com
+	</footer>
+
+</div>

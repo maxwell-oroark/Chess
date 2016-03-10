@@ -22,10 +22,10 @@ function loginCtrl($scope){
 		console.log('I am the loginCtrl!')
 	}
 
-chessModule.controller('chessController', ['$scope','chessData','gameLib', function($scope, chessData, gameLib){
+chessModule.controller('chessController', ['$scope','chessData','gameLib','Auth','$location', function($scope, chessData, gameLib, Auth, $location){
 
 	// imports board object which contains 'rows', 'files', 'squares', and an array of 64 squares.
-
+	Auth.isLoggedIn()
 	$scope.board = chessData.board
 	$scope.games = gameLib.games
 	$scope.endgames = gameLib.endgames
