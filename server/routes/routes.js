@@ -26,6 +26,11 @@ apiRouter.use(function(req,res,next){
   }
 })
 
+apiRouter.route("/me")
+.get( function(req, res){ 
+  res.send(req.decodedToken)
+})
+
 apiRouter.route("/users")
   .get(ctrls.userController.all)
 

@@ -5,22 +5,24 @@ module.exports = {
     create : function(req, res){
       if(req.body){
         var user = new db.User(req.body)
+        var token = jwt.sign({name : user.name, admin : user.admin}, "catzpajamas", {expiresInMinutes : 52000})
         user.save(function(err){
           if (err) throw err;
-          res.json({message: "User Created!", success : true})
+          res.json({token : token, message: "User Created!", success : true})
         })
       }
     },
     login : function(req, res){
       db.User.findOne({username: req.body.username}, function(err, user){
         if (user){
+          // var x = setTimeout(function(){
           if (user.authenticate(req.body.password)){
-            var token = jwt.sign({name : user.name, admin : user.admin}, "catzpajamas", {expiresInMinutes : 52000})
-            res.json({token : token, message : "valid user"})
-
-          } else {
-            res.send("error!")
-          }
+              var token = jwt.sign({name : user.name, admin : user.admin}, "catzpajamas", {expiresInMinutes : 52000})
+              res.json({token : token, message : "valid user", success: true})
+            } else {
+            res.json({message : "error, wrong credentials."})
+            }
+        // },1000)
         }
       })
     },

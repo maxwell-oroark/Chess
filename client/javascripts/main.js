@@ -1,15 +1,22 @@
-var chessModule = angular.module('chess', ["authFactory", "ngRoute"])
+var chessModule = angular.module('chess',
+[
+ "authFactory",
+ "ngRoute",
+ "angular-loading-bar",
+ "ngAnimate"
+])
 
 // Next, we need to tell our module we're going to be routing using ngRoute
 // and define those routes
 angular.module('chess')
-	.config(function($routeProvider){
+	.config(function($routeProvider, $httpProvider){
 		// $routeProvider is a service contained on ngRoute
 		// Must also use the directive ng-view
+		$httpProvider.interceptors.push("AuthInterceptor")
 		$routeProvider
 			.when('/', {
 				templateUrl : '/login.html', // route on SERVER where the template file lives
-				controller  : 'loginCtrl'  // name of angular CONTROLLER to use with the template
+				controller  : 'main-controller'  // name of angular CONTROLLER to use with the template
 			})
 			.when('/home', {
 				templateUrl : '/html/main.html',
@@ -25,7 +32,7 @@ function loginCtrl($scope){
 chessModule.controller('chessController', ['$scope','chessData','gameLib','Auth','$location', function($scope, chessData, gameLib, Auth, $location){
 
 	// imports board object which contains 'rows', 'files', 'squares', and an array of 64 squares.
-	Auth.isLoggedIn()
+	// Auth.isLoggedIn()
 	$scope.board = chessData.board
 	$scope.games = gameLib.games
 	$scope.endgames = gameLib.endgames
