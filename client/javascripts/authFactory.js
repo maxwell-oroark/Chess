@@ -24,13 +24,10 @@
        .then(function (data) {
          console.log("hello", data)
 
-         if(data.data.token){
+
          AuthToken.setToken(data.data.token);
-         $location.url('/home')
-       }
-       else {
-         $location.url('/')
-       }
+         return data.data
+
        })
    }
    // log a user out by clearing the token
@@ -96,7 +93,7 @@
      // if our server returns a 403 forbidden response
      if (response.status == 403) {
        AuthToken.setToken()
-       $location.path('/login')
+       $location.path('/')
      }
      // return the errors from the server as a promise
      return $q.reject(response)
