@@ -18,15 +18,12 @@ angular.module('chess')
 				controller  : 'main-controller'  // name of angular CONTROLLER to use with the template
 			})
 			.when('/home', {
-				templateUrl : '/html/main.html',
-				controller : 'chessController'
+				templateUrl : '/html/dashboard.html',
+				controller : 'main-controller'
 			})
 
 	})
 
-function loginCtrl($scope){
-		console.log('I am the loginCtrl!')
-	}
 
 chessModule.controller('chessController', ['$scope','chessData','gameLib','Auth','$location', function($scope, chessData, gameLib, Auth, $location){
 

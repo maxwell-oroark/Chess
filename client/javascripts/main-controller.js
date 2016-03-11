@@ -2,7 +2,7 @@ angular.module("chess")
   .controller("main-controller", function($rootScope, $http, $scope, $location, Auth){
     $scope.loggedIn = Auth.isLoggedIn()
     $rootScope.$on("$routeChangeStart", function(){
-      console.log("changing root scope");
+      // console.log("changing route scope");
       $scope.loggedIn = Auth.isLoggedIn()
       Auth.getUser()
         .then(function(user){
@@ -42,4 +42,22 @@ angular.module("chess")
 
           })
       }
+      console.log($scope.user)
+
+      //This will be moved after a while into a new controller but for now the stuff below will define creating a new game for the dashboard.
+
+
+
+      $scope.newGame = function(){
+        $http({
+          method : 'POST',
+          url    : '/api/games/',
+          data   : $scope.user.username
+        })
+      }
+
+
+
+
+
   })

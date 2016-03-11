@@ -16,8 +16,10 @@ module.exports = {
       db.User.findOne({username: req.body.username}, function(err, user){
         if (user){
           // var x = setTimeout(function(){
+          console.log(user)
+          console.log(user._id)
           if (user.authenticate(req.body.password)){
-              var token = jwt.sign({name : user.name, admin : user.admin}, "catzpajamas", {expiresInMinutes : 52000})
+              var token = jwt.sign({name : user.name, id : user._id, username : user.username, admin : user.admin}, "catzpajamas", {expiresInMinutes : 52000})
               res.json({token : token, message : "valid user", success: true})
             } else {
             res.json({message : "error, wrong credentials."})
