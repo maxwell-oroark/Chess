@@ -2,7 +2,6 @@ var chessModule = angular.module('chess',
 [
  "authFactory",
  "ngRoute",
- "angular-loading-bar",
  "ngAnimate"
 ])
 
