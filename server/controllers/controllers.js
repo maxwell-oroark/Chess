@@ -34,5 +34,31 @@ module.exports = {
       })
     },
 
+  },
+  gameController : {
+    create : function(req, res){
+      var game = new db.Game({
+        players : req.body.id,
+        moves   : ['rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR']
+      })
+
+      game.save(function(err){
+        if (err) throw err
+        res.json({messsage : "success, game created", game : game})
+      })
+    },
+    //need to test this function with postman see what my req.params are why is _id undefined?
+
+    goTo : function(req,res){
+      console.log( "req.BODY--->", req.body)
+      db.Game.findOne({ _id : req.body.id }, function(err,game){
+        if (game) {
+          console.log(game)
+          res.json({game : game, message : 'game successfully found?'})
+        } else {
+          res.json({message : 'error, no game found, check out req.params?'})
+        }
+      })
+    }
   }
 }
