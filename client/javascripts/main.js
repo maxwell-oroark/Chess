@@ -25,6 +25,10 @@ angular.module('chess')
         templateUrl : '/html/main.html',
         controller  : 'chessController'
       })
+      .when('/games/:gameid', {
+        templateUrl : '/html/main.html',
+        controller  : 'chessController'
+      })
 
 	})
 

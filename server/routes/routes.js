@@ -36,5 +36,9 @@ apiRouter.route("/users")
 //This route below will feebly try to create a game and add it to the mongoDB database, may god have mercy on our souls.
 apiRouter.route("/games")
   .post(ctrls.gameController.create)
+//This route below will try to get data about the game that is being requestd by the user.
+apiRouter.route("/games/:gameid")
+  .post(ctrls.gameController.goTo)
+
 
 module.exports = apiRouter

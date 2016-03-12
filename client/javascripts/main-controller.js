@@ -1,5 +1,5 @@
 angular.module("chess")
-  .controller("main-controller", function($rootScope, $http, $scope, $location, Auth){
+  .controller("main-controller", function($rootScope, $http, $scope, $location, Auth, $interval){
     $scope.loggedIn = Auth.isLoggedIn()
     $rootScope.$on("$routeChangeStart", function(){
       // console.log("changing route scope");
@@ -34,10 +34,9 @@ angular.module("chess")
           }).then(function(returnData){
               console.log(returnData)
               // This part below is never running because I am not sending back any data with tokens in it.
-              if ( returnData.data.token) {
-								window.localStorage.setItem('token', returnData.data.token)
-                console.log("true..")
-                $location.path('/home')
+              if ( returnData.data) {
+								$scope.userCreated = true;
+                console.log("user created")
 							 }
 
           })
@@ -69,7 +68,21 @@ angular.module("chess")
           console.log($scope.publicGames)
         })
       }
+      //This (hopefully) routes the user to an empty board when the click on the game they want to play
+      $scope.goToGame = function($index){
+        $location.path('/games/' + $scope.publicGames[$index]._id)
+        $interval(function(){
+          $http({
+            method : 'POST',
+            url    : '/api/games/' + $scope.publicGames[$index]._id,
+            data   : { id : $scope.publicGames[$index]._id }
+          }).then(function(response){
+            console.log(response)
+          })
+        },1000)
 
+
+      }
 
 
 

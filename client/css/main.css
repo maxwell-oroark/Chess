@@ -152,14 +152,16 @@ h1,h2,h3,h4,h5,h6 {
 
 .lobby-game {
 	display : inline-block;
-	height: 250px;
-	width: 250px;
-	border: 1px solid black;
+	height: 200px;
+	width: 200px;
+	border: 2px solid black;
 }
 
 .lobby-game img {
-	height: 200px;
-	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 150px;
+	width: 150px;
 }
 
 
