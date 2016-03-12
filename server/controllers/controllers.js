@@ -34,5 +34,19 @@ module.exports = {
       })
     },
 
+  },
+  gameController : {
+    create : function(req, res){
+      console.log("req.body:", req.body)
+      var game = new db.Game({
+        players : req.body.id,
+        moves   : ['rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR']
+      })
+
+      game.save(function(err){
+        if (err) throw err
+        res.json({messsage : "success, game created", game : game})
+      })
+    }
   }
 }

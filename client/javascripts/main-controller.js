@@ -45,14 +45,28 @@ angular.module("chess")
       console.log($scope.user)
 
       //This will be moved after a while into a new controller but for now the stuff below will define creating a new game for the dashboard.
+      $scope.publicGames = []
 
 
+      var populatePublic = function(game){
+        $scope.game = game
+        $scope.publicGames.push($scope.game)
+      }
+
+      $scope.emptyBoard = function(){
+        $location.path('/board')
+      }
 
       $scope.newGame = function(){
         $http({
           method : 'POST',
-          url    : '/api/games/',
-          data   : $scope.user.username
+          url    : '/api/games',
+          data   : {
+            id : $scope.user.id
+          }
+        }).then(function(response){
+          populatePublic(response.data.game)
+          console.log($scope.publicGames)
         })
       }
 

@@ -25,13 +25,16 @@ apiRouter.use(function(req,res,next){
     res.json({message : "no token found, please sign in"})
   }
 })
-
+//This route below gives intimate details of the person logged in.
 apiRouter.route("/me")
-.get( function(req, res){ 
+  .get( function(req, res){
   res.send(req.decodedToken)
 })
-
+//This route below gives intimate details of all users in the user database
 apiRouter.route("/users")
   .get(ctrls.userController.all)
+//This route below will feebly try to create a game and add it to the mongoDB database, may god have mercy on our souls.
+apiRouter.route("/games")
+  .post(ctrls.gameController.create)
 
 module.exports = apiRouter

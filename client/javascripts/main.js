@@ -21,6 +21,10 @@ angular.module('chess')
 				templateUrl : '/html/dashboard.html',
 				controller : 'main-controller'
 			})
+      .when('/board', {
+        templateUrl : '/html/main.html',
+        controller  : 'chessController'
+      })
 
 	})
 
