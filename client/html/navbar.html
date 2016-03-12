@@ -1,9 +1,9 @@
-<nav ng-controller = "main-controller" class="navbar navbar-inverse">
+<nav ng-controller = "main-controller" class="navbar navbar-inverse animated fadeInDown">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class = "row">
-      <div class="col-md-3 navbar-header">
-        <a class="navbar-brand" href="#"><span ng-show="loggedIn">Welcome,&nbsp;{{user.name}}</span></a>
+      <div class="col-md-3 navbar-header mynavbar">
+        <a class="navbar-brand" href="#"><span ng-show="loggedIn">{{user.username}}</span></a>
       </div>
 
       <div class = 'col-md-6 navbar-header'>

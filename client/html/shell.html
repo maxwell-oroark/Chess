@@ -11,15 +11,14 @@
 			<script src = '../javascripts/main.js' type = 'text/javascript'></script>
 			<script src = '../javascripts/board.js' type = 'text/javascript'></script>
 			<script src = '../javascripts/library.js' type = 'text/javascript'></script>
-			<script src = 'javascripts/authFactory.js' type = "text/javascript"></script>
-			<script src = 'javascripts/main-controller.js' type = 'text/javascript'></script>
-			<script type='text/javascript' src='javascripts/loading-bar.js'></script>
+			<script src = '../javascripts/authFactory.js' type = "text/javascript"></script>
+			<script src = '../javascripts/main-controller.js' type = 'text/javascript'></script>
 
 			<!-- CSS -->
 			<link href= '../css/spaceship.bootstrap.min.css' type = 'text/css' rel = 'stylesheet'>
 			<link href = '../css/main.css' type ='text/css' rel = 'stylesheet'>
 			<link href = '../css/animate.css' type = "text/css" rel = 'stylesheet'>
-			<link rel='stylesheet' href='css/loading-bar.css' type='text/css' media='all' />
+
 			<!-- LATO FONT -->
 			<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
@@ -28,9 +27,8 @@
   <body ng-controller = "main-controller">
       <!-- Pulls in a template and drops it inside of ng-include -->
   	  <ng-include src="'/html/navbar.html'"> </ng-include>
-			<div id = "content-views">
-      	<div ng-view><!-- Template content will go here? --></div>
-			</div>
+      <div class="animated fadeIn" ng-view><!-- Template content will go here? --></div>
+
   </body>
 
 </html>
